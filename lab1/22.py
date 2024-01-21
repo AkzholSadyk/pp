@@ -1,2 +1,2 @@
-x = "Hello World"
-print(len(x))
+txt = "Hello World"
+x = txt[0]
