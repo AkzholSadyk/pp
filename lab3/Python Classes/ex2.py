@@ -14,3 +14,7 @@ class Square(Shape):
     def area(self):
         return self.length ** 2
 
+
+Asqr=Square()
+print(Asqr.area())
+print(Square().area())
