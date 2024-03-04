@@ -1,5 +1,5 @@
 import re
-def text_match(text):
-   return re.sub(r" (\W) (IA-Z])", r"\1 \2", text)
-a=input ()
-print(text_match(a))
+def text(a):
+   return re.sub(r" (\W) ([A-Z])", r"\1 \2", a)
+a=input('')
+print(text(a))
