@@ -1,7 +1,7 @@
 import re
 
 def ss(a):
-    b ='^[A-Z]+([a-z]*)+$'  #'^[A-Z].*$'
+    b ='^[A-Z]+([a-z]*)+$'  
     if re.search(b, a):
         return 'Found a match!'
     else:

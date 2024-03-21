@@ -1,7 +1,6 @@
 import os
 
 def checking(a):
-    # Check existence
     if os.path.exists(a):
         print(f"the path '{a}' exists")
     else:

@@ -1,6 +1,6 @@
 import re
-def convert(text) :
-    x=re.sub(r"(\w)([A-Z])", r"\1 \2", text)
+def convert(a) :
+    x=re.sub("(\w)([A-Z])", "\1 \2", a)
     ans=re.sub("[]","_",x)
     return ans 
 a=input()
