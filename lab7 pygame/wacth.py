@@ -63,7 +63,6 @@ def game():
         #hour
         R = 250
         theta = (hour+minute/60+second/3600)*(360/12)
-    
         pygame.draw.line(screen, (0, 0 , 0), (400, 400), convert_degrees_to_pygame(R, theta), 5)
 
         

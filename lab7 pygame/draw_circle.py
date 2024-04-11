@@ -45,7 +45,7 @@ while True:
     ball_y = max(ball_radius, min(screen_height - ball_radius, ball_y))
 
     
-    screen.fill(white)
+    screen.fill((255, 255, 255))
     pygame.draw.circle(screen, red, (ball_x, ball_y), ball_radius)
     pygame.display.update()
 

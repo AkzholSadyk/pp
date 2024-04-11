@@ -94,6 +94,45 @@ def restart_game():
     INC_SPEED = pygame.USEREVENT + 1
     pygame.time.set_timer(INC_SPEED, 1000)
  
+    class Button:
+      def __init__(self, x, y, width, height, text, image_path, hover_image_path= None, sound_path = None):
+          self.x = x
+          self.y = y
+          self.width = width
+          self.height = height
+          self.text = text
+          
+          self.image = pygame.image.load(image_path)
+          self.image = pygame.transform.scale(self.image, (width, height))
+          self.hover_image = self.image
+          if hover_image_path:
+             self.hover_image = pygame.image.load(hover_image_path)
+             self.hover_image = pygame.transform.scale(self.hover_image, (width, height))
+          self.rect = self.image.get_rect(topleft = (x, y))
+          self.sound = None
+          if sound_path:
+             self.sound = pygame.mixer.Sound(sound_path)
+          self.is_hovered = False
+      def draw(self, sc):
+       current_image = self.hover_image if self.is_hovered else self.image
+       sc.blit(current_image, self.rect.topleft)
+       font = pygame.font.Font(None, 36)
+       text_surface = font.render(self.text, True, (255, 255, 255))
+       text_rect = text_surface.get_rect(center = self.rect.center)
+       sc.blit(text_surface, text_rect)
+    
+      def check_hover(self, mouse_pos):
+       self.is_hovered = self.rect.collidepoint(mouse_pos)
+      
+      def handle_event(self, event):
+       if event.type == pygame.MOUSEBUTTONDOWN and event.button ==1 and self.hovered:
+          if self.sound:
+             self.sound.play()
+          pygame.event.post(pygame.event.Event(pygame.USEREVENT, button = self))
+
+    green_button = Button(WIDTH/2 - (252/2), 100, 252, 74, "", 'exit.jpg','exit.jpg', 'button.mp3')
+
+
 
     while True:
        
@@ -109,8 +148,8 @@ def restart_game():
                        
               restart_game()
     
-
-
+        
+        
         sc.fill(WHITE)
         sc.blit(race, (0,0))
     
@@ -122,13 +161,17 @@ def restart_game():
  
     
         if pygame.sprite.spritecollideany(P1, enemies):
-          sc.fill((0,0,0))
-          render_end = font_end.render('GAME OVER', 1, pygame.Color('white'))
+          sc.fill((255,255,255))
+          render_end = font_end.render('GAME OVER', 1, pygame.Color('black'))
           sc.blit(render_end, (HEIGHT //2 -250, WIDTH//2 + 50))
           pygame.display.update()
           for entity in all_sprites:
                 entity.kill() 
-          time.sleep(2)
+          time.sleep(3)
+
+          green_button.check_hover(pygame.mouse.get_pos())
+          sc.blit(sc, (250, 150))
+          pygame.display.flip()
         
         
           
