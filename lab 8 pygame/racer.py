@@ -27,8 +27,8 @@ def restart_game():
     
     ra = pygame.image.load('race.jpg')
     race = pygame.transform.scale(ra, (WIDTH, HEIGHT))
-    enemy = pygame.image.load('enemy2.jpg')
-    player = pygame.image.load('player2.jpg')
+    enemy = pygame.image.load('enemy.jpg')
+    player = pygame.image.load('player.jpg')
     enemy2 = pygame.transform.scale(enemy, (54, 98))
     player2 = pygame.transform.scale(player, (54, 98))
 

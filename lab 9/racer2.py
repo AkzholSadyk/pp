@@ -1,4 +1,4 @@
-import pygame
+import pygame 
 import sys
 import random
 
@@ -6,8 +6,6 @@ pygame.init()
 
 score1 = 0
 CL = 60
-
-
 weight = 400
 height = 600
 step = 5
